@@ -1,0 +1,4 @@
+CPU: {{ ansible_facts.product_name }} <br>
+RAM: {{ ansible_facts.memory_mb.real.total }} MB <br>
+First HDD: {{ ansible_facts.mounts.0.device }} size: {{ ansible_facts.mounts.0.size_total }} <br>
+IP: {{ ansible_facts.default_ipv4.address }} <br>

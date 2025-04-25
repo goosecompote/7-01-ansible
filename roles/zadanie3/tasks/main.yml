@@ -1,0 +1,17 @@
+---
+  - name: Update repositories cache and install package
+    ansible.builtin.apt:
+      name: apache2
+      update_cache: yes
+
+  - name: Make sure a service unit is running
+    ansible.builtin.systemd_service:
+      enabled: yes
+      name: apache2
+ 
+  - name: Create index.html using Jinja2
+    template:
+      src: index.j2
+      dest: /var/www/html/index.html
+    notify:
+      - restart apache2
